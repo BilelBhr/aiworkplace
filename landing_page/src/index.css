@@ -54,7 +54,7 @@ All colors MUST be HSL for consistency
     --border: 240 5.9% 90%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(263 70% 65%) 0%, hsl(280 60% 70%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(263, 55%, 31%) 0%, hsl(263, 55%, 31%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(142 76% 45%) 0%, hsl(142 76% 35%) 100%);
     --gradient-light: linear-gradient(135deg, hsl(240 4.8% 95.9%) 0%, hsl(0 0% 100%) 100%);
 

@@ -29,15 +29,15 @@ export function Header({ userRole, onRoleChange, onToggleSidebar }: HeaderProps)
             <Menu className="h-5 w-5" />
           </Button>
           
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-              <Brain className="h-5 w-5 text-white" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-white">aiWorkplace</h1>
-              <p className="text-xs text-white/80">AI-Powered Workspace</p>
-            </div>
+          
+          <div className="flex items-center justify-center">
+              <img
+                src="/logo.png"
+                alt="KAUZ AI Workplace"
+                className="w-full max-h-12 object-contain"
+              />
           </div>
+          
         </div>
 
         <div className="flex items-center gap-4">
