@@ -50,9 +50,10 @@ export const LandingPage = () => {
   ];
 
   const models = [
-    { provider: "OpenAI", models: ["GPT-4 Turbo", "GPT-4", "GPT-3.5"], color: "bg-green-500" },
-    { provider: "Anthropic", models: ["Claude 3 Opus", "Claude 3 Sonnet", "Claude 3 Haiku"], color: "bg-orange-500" },
-    { provider: "Google", models: ["Gemini Pro", "Gemini Pro Vision"], color: "bg-blue-500" }
+    { provider: "OpenAI", color: "bg-green-500", logo: "/openai.svg" },
+    { provider: "Anthropic", color: "bg-red-500", logo: "/anthropic-logo.svg" },
+    { provider: "Google", color: "bg-blue-500", logo: "/google-logo.svg" },
+    { provider: "Mistral AI", color: "bg-orange-500", logo: "/mistral-logo.svg" }
   ];
 
   const pricing = [
@@ -62,6 +63,7 @@ export const LandingPage = () => {
       description: "Perfect for individuals getting started",
       features: ["5,000 AI points/month", "Access to GPT-3.5", "Basic SharePoint integration", "Community support"],
       cta: "Get Started",
+      redirection: "/workspace",
       popular: false
     },
     {
@@ -70,6 +72,7 @@ export const LandingPage = () => {
       description: "For professionals and small teams",
       features: ["50,000 AI points/month", "All AI models", "Full SharePoint access", "Python execution", "Priority support"],
       cta: "Start Free Trial",
+      redirection: "/workspace",
       popular: true
     },
     {
@@ -78,6 +81,7 @@ export const LandingPage = () => {
       description: "For large organizations",
       features: ["Unlimited AI points", "Custom model fine-tuning", "Advanced security", "Dedicated support", "Custom integrations"],
       cta: "Contact Sales",
+      redirection: "https://kauz.ai/erfahren-sie-mehr-ueber-ki-assistenten/",
       popular: false
     }
   ];
@@ -102,8 +106,8 @@ export const LandingPage = () => {
               <a href="#features" className="text-white/80 hover:text-white transition-colors">Features</a>
               <a href="#models" className="text-white/80 hover:text-white transition-colors">Models</a>
               <a href="#pricing" className="text-white/80 hover:text-white transition-colors">Pricing</a>
-              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-white/10" asChild>
-                <Link to="/workspace">Sign In</Link>
+              <Button variant="outline" className=" text-white hover:bg-white/10 bg-white/10" asChild>
+                <Link to="https://ai-workplace.kauz.ai/">Sign In</Link>
               </Button>
               <Button className="bg-white text-black hover:bg-white/90" asChild>
                 <Link to="/workspace">Get Started</Link>
@@ -123,14 +127,14 @@ export const LandingPage = () => {
             </Badge>
             
             <h1 className="text-4xl lg:text-6xl font-bold text-foreground max-w-4xl mx-auto leading-tight">
-              The AI workspace that
+              The AI workplace that
               <span className="bg-gradient-primary bg-clip-text text-transparent"> transforms </span>
               how you work
             </h1>
             
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Chat with multiple AI providers, access your SharePoint data, execute Python code, 
-              and automate workflows all in one intelligent workspace.
+              Chat with multiple AI providers, access your SharePoint data, execute Python code,
+              and automate workflows all in one intelligent workplace.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -140,7 +144,9 @@ export const LandingPage = () => {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="text-lg px-8">
-                Watch Demo
+                <Link to="https://www.youtube.com/watch?v=xoYkzKD_q4w">
+                  Watch Demo
+                </Link>
               </Button>
             </div>
             
@@ -202,30 +208,23 @@ export const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-              Access the best AI models
+              Access the top tier AI models
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Switch between leading AI providers seamlessly in one interface
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {models.map((provider, index) => (
               <Card key={index} className="bg-gradient-card border-border hover:shadow-card transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center gap-3">
-                    <div className={`w-3 h-3 rounded-full ${provider.color}`} />
+                    <img className={`w-7 h-7 `} src={provider.logo} alt={`${provider.provider} logo`} />
                     <CardTitle className="text-foreground">{provider.provider}</CardTitle>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                  {provider.models.map((model, modelIndex) => (
-                    <div key={modelIndex} className="flex items-center justify-between p-2 rounded-lg bg-accent/50">
-                      <span className="text-foreground font-medium">{model}</span>
-                      <Badge variant="secondary">Available</Badge>
-                    </div>
-                  ))}
-                </CardContent>
+                
               </Card>
             ))}
           </div>
@@ -277,7 +276,8 @@ export const LandingPage = () => {
                     variant={plan.popular ? "default" : "outline"}
                     asChild
                   >
-                    <Link to="/workspace">{plan.cta}</Link>
+
+                    <Link to={plan.redirection}>{plan.cta}</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -310,20 +310,20 @@ export const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center gap-2 mb-4 md:mb-0">
-              <div className="w-8 h-8 flex items-center justify-center">
+              <div className="w-21 h-auto flex items-center justify-center">
                 <img
                   src="/logo.svg"
                   alt="KAUZ AI Workplace"
-                  className="w-full max-h-12 object-contain"
+                  className="w-full h-8 object-contain"
                 />
               </div>
-              <span className="font-bold text-xl text-foreground">Kauz.ai</span>
+              
             </div>
             <div className="flex items-center gap-6 text-muted-foreground">
-              <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-              <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-              <a href="#" className="hover:text-foreground transition-colors">Support</a>
-              <span>© 2025 Kauz.ai All rights reserved.</span>
+              <a href="https://kauz.ai/datenschutz" className="hover:text-foreground transition-colors">Privacy Policy</a>
+              <a href="https://kauz.ai/impressum" className="hover:text-foreground transition-colors">Terms of Service</a>
+              <a href="https://kauz.ai/eula" className="hover:text-foreground transition-colors">EULA</a>
+              <span>© 2025 Kauz GmbH. All rights reserved.</span>
             </div>
           </div>
         </div>
